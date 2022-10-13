@@ -11,24 +11,24 @@ datasource db {
 }
 
 model User {
-  id             String          @id @default(uuid())
-  name           String
-  age            Int
-  email          String          @unique
-  role           Role            @default(BASIC)
-  writtenPosts   Post[]          @relation("WrittenPosts")
-  favPosts       Post[]          @relation("FavPosts")
-  UserPreference UserPreference?
+  id               String @id @default(uuid())
+  name             String
+  age              Int
+  email            String @unique
+  role             Role   @default(BASIC)
+  writtenPosts     Post[] @relation("WrittenPosts")
+  favPosts         Post[] @relation("FavPosts")
+  userPreference   UserPreference?   @relation(fields: [userPreferenceId], references: [id])
+  userPreferenceId String? @unique
 
   @@index([email])
 }
 
 //one-to-one
 model UserPreference {
-  id           String  @id @default(uuid())
-  emailUpdates Boolean
-  user         User    @relation(fields: [userId], references: [id])
-  userId       String  @unique
+  id             String          @id @default(uuid())
+  emailUpdates   Boolean
+  user           User?
 }
 
 //one-to-many
