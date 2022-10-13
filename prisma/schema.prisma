@@ -15,7 +15,7 @@ model User {
   name           String
   age            Int
   email          String          @unique
-  isAdming       Boolean         @default(false)
+  role           Role            @default(BASIC)
   writtenPosts   Post[]          @relation("WrittenPosts")
   favPosts       Post[]          @relation("FavPosts")
   UserPreference UserPreference?
@@ -51,4 +51,10 @@ model Category {
   id    String @id @default(uuid())
   name  String @unique
   posts Post[]
+}
+
+enum Role {
+  BASIC
+  EDITOR
+  ADMIN
 }

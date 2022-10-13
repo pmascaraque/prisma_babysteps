@@ -8,7 +8,7 @@ async function main() {
   })
   console.log(user)
   */
-  //const deleteUsers = await prisma.user.deleteMany({})
+  //await prisma.user.deleteMany()
   const users = await prisma.user.findMany()
   console.log(users)
 }
