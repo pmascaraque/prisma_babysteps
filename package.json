@@ -2,8 +2,10 @@
   "name": "prisma_docs",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/pmascaraque/prisma_docs.git",
-  "author": "Pablo Moreno <ssm.pablo@gmail.com>",
+  "scripts": {
+    "dev": "nodemon script.ts"
+  },
+  "author": "",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^18.8.5",
