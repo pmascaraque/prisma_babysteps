@@ -21,7 +21,23 @@ async function main() {
     }
   })
 
+  const post = await prisma.post.findMany({
+    where: {
+      author: {
+        is: {
+          age: 27,
+        }
+      }
+    }
+  })
+
   const users = await prisma.user.findMany({
+    where: {
+      //name: { not: "Sally" }
+      //age: { gt: 20 }
+      //email: {contains: "@gmail"}
+      email: { startsWith: "bob"}
+    },
     orderBy: {
       age: "desc"
     }
