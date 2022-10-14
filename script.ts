@@ -21,6 +21,17 @@ async function main() {
     }
   })
 
+  const update = await prisma.user.update({
+    where: {
+      email: "jack3@gmail.com"
+    },
+    data: {
+      age: {
+        increment: 1
+      }
+    }
+  })
+
   const post = await prisma.post.findMany({
     where: {
       author: {
@@ -32,7 +43,7 @@ async function main() {
   })
 
   const users = await prisma.user.findMany({
-    where: {
+    /*where: {
       //name: { not: "Sally" }
       //age: { gt: 20 }
       //email: {contains: "@gmail"}
@@ -41,7 +52,7 @@ async function main() {
     orderBy: {
       age: "desc"
     }
-  })
+  */})
   console.log(users)
 }
 
